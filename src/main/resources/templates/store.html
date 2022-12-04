@@ -4,9 +4,10 @@
 <head>
 	<meta charset="utf-8">
 	<link th:href="@{/css/bootstrap.css}" rel="stylesheet" href="../static/css/bootstrap.css" />
+	<link th:href="@{/css/styles.css}" rel="stylesheet" href="../static/css/styles.css" />
 	<script th:src="@{/js/jquery-3.6.1.min.js}" src="../static/js/jquery-3.6.1.min.js"></script>
 	<script th:src="@{/js/bootstrap.js}" src="../static/js/bootstrap.js"></script>
-		<script src="https://kit.fontawesome.com/b09eaa3b79.js" crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/b09eaa3b79.js" crossorigin="anonymous"></script>
 	<title>SalsaBar</title>
 </head>
 
@@ -17,15 +18,34 @@
 		</a>
 
 		<div class="collapse navbar-collapse mr-4" id="navbarText">
-			<ul class="navbar-nav ml-auto mr-4">
-				<li class="nav-item">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item active">
 					<a class="nav-link" href="/index">Home<span class="sr-only">(current)</span></a>
 				</li>
-				<li class="nav-item active">
+				<li class="nav-item">
 					<a class="nav-link" href="/productos">Productos</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#"><i class="fa-sharp fa-solid fa-cart-shopping"></i></a>
+			</ul>
+			<ul class="contenedor-carrito">
+				<li class="submenu">
+					<i class="fa-solid fa-cart-shopping"></i>
+					<div id="carrito">
+						<table id="lista-carrito" class="u-full-width table-hover table">
+							<thead>
+								<tr>
+									<th style="text-align: center;">Imagen</th>
+									<th style="text-align: center;">Producto</th>
+									<th style="text-align: center;">Precio</th>
+									<th style="text-align: center;">Cantidad</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody></tbody>
+						</table>
+						<div class="center-button">
+							<a href="#0" id="vaciar-carrito" class="button u-full-width">Vaciar Carrito</a>
+						</div>
+					</div>
 				</li>
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
@@ -35,22 +55,23 @@
 		</div>
 	</nav>
 	
-	<div class="Container w-65 mx-auto mb-4">
-		<h1 class="mx-auto text-center text-muted mb-5 border-bottom pb-3 mt-5">Productos</h1>
-		<div class="card-columns row justify-content-center ">
-			<div th:each="producto: ${store}" class="card " style="width: 250px;">
-				<img th:src="${producto.img}" class="card-img-top" src="${producto.img}"
-					alt="Card image cap" style="height:200px";>
-				<div class="card-body">
-					<h5 th:text="${producto.nombre}"></h5>
-					<p th:text="${producto.descripcion}"></p>
-					<p th:text="${producto.precio}" class="text-success text-right font-weight-bold"></p>
-					<a href="#" class="btn btn-outline-danger">Agregar Al carrito</a>
-				</div>
-			</div>
-			
-		</div>
-	</div>
+	<main class="container w-75 mx-auto mb-4" id="productos">
+    	<h1 class="mx-auto text-left text-muted mb-5 border-bottom pb-3 mt-5">Productos</h1>
+        <div class="card-columns row justify-content-center" id="lista-productos">
+          
+        <div th:each="producto: ${store}" class="producto card mr-5" style="width: 250px;">
+        <img th:src="${producto.img}" class="card-img-top imagen" src="${producto.img}" alt="Card image cap" style="height:200px;">
+        	<div class="card-body">
+            	<h3 th:text="${producto.nombre}" class="text-danger nombre"></h3>
+                <div class="">
+                	<p th:text="${producto.descripcion}" class="text-muted"></p>
+                    <p th:text="${producto.precio}" class="text-success text-right font-weight-bold precio"></p>
+                </div>
+                <a href="#" class="btn btn-outline-danger agregar-al-carro" th:data-id="${producto.Id}"><i class="fa-sharp fa-solid fa-cart-shopping"></i></a>
+             	</div>
+        </div>
+
+        </main>
 	
 	<div class="container">
 	  <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
@@ -97,6 +118,7 @@
 	    </div>
 	  </footer>
 	</div>
+		<script th:src="@{/js/carrito.js}" src="../static/js/carrito.js"></script>
 </body>
 
 </html>
