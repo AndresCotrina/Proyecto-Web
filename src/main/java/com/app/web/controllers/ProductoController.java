@@ -17,7 +17,7 @@ public class ProductoController {
 		mdl.addAttribute("productos", servicio.listar());
 		return "productos";
 	}
-	@GetMapping(path = {"/productos"})
+	@GetMapping("/productos")
 	public String listarStore(Model mdl) {
 		mdl.addAttribute("store", servicio.listar());
 		return "store";

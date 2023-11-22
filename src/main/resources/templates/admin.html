@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+	<meta charset="utf-8">
+	<link th:href="@{/css/bootstrap.css}" rel="stylesheet" href="../static/css/bootstrap.css" />
+	<script th:src="@{/js/jquery-3.6.1.min.js}" src="../static/js/jquery-3.6.1.min.js"></script>
+	<script th:src="@{/js/bootstrap.js}" src="../static/js/bootstrap.js"></script>
+	<script src="https://kit.fontawesome.com/b09eaa3b79.js" crossorigin="anonymous"></script>
+	<title>SalsaBar</title>
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#0">
+			<img th:src="@{/img/salsabar.jpg}" class="d-block ml-4" src="../static/img/salsabar.jpg" alt="First slide" style="height: 5rem;">
+		</a>
+		<h3 class="text-light ml-auto">Bienvenido <span sec:authentication="principal.username"></span> <br></h3>
+		 <a class="ml-auto btn btn-danger" th:href="@{/admin/logout}">Cerrar sesión</a>
+	</nav>
+	<div class="container mt-4 mb-4">
+	<h1 class="text-center text-muted">Control de Productos</h1>
+		<a href="/admin/agregar" class="btn btn-success mb-4">Agregar Producto</a>
+		<table class="table">
+		  <thead class="thead-dark">
+		    <tr>
+		      <th scope="col">Id</th>
+		      <th scope="col">Nombre</th>
+		      <th scope="col">Descripcion</th>
+		      <th scope="col">Precio</th>
+		      <th scope="col">Imagen</th>
+		      <th scope="col">Acciones</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr th:each="producto:${admin}" class="text-muted">
+		      <td th:text="${producto.id}"></td>
+		      <td th:text="${producto.nombre}"></td>
+		      <td th:text="${producto.descripcion}"></td>
+		      <td th:text="${producto.precio}"></td>
+		      <td th:text="${producto.img}" class="w-25"></td>
+		      <td>
+		      	<a th:href="@{/admin/editar/{id}(id=${producto.id})}" class="btn btn-warning">Editar <i class="fa-solid fa-pencil"></i></a>
+		      	<a th:href="@{/admin/delete/{id}(id=${producto.id})}" class="btn btn-danger">Eliminar <i class="fa-solid fa-trash"></i></a>
+		      </td>
+		    </tr>
+		
+		  </tbody>
+		</table>
+	</div>
+	<div class="container">
+	  <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
+	    <div class="col mb-3">
+	      <a href="#0" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
+	        <img th:src="@{/img/salsabar.jpg}" class="d-block mx-auto" src="../static/img/salsabar.jpg" alt="First slide" style="height: 10rem;">
+	      </a>
+	      <p class="text-center text-muted">© 2022</p>
+	    </div>
+	  </footer>
+	</div>
+</body>
+
+</html>

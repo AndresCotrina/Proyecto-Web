@@ -1,0 +1,82 @@
+.contenedor-carrito{
+	margin: 10px;
+	padding: 0;
+}
+.submenu {
+    position: relative;
+}
+
+.submenu #carrito{
+    display: none;
+    border: 1px solid #686868;
+}
+.submenu:hover #carrito{
+    display: block;
+    position: absolute;
+    right:0;
+    top:100%;
+    z-index: 1;
+    background-color: white;
+    padding: 20px;
+    min-height: 400px;
+    min-width: 300px;
+}
+.contenedor-carrito li{
+    list-style: none;
+}
+.button{
+    display: inline-block;
+    height: 38px;
+    padding: 0 30px;
+    color: #555;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 38px;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border-radius: 4px;
+    border: 1px solid #bbb;
+    cursor: pointer;
+    box-sizing: border-box; 
+}
+.submenu i{
+    color: #F3F4ED;
+    font-size: 25px;
+    transition: 0.2s;
+}
+.submenu:hover i{
+    color: #dc3545;
+}
+.button:hover,.button:focus{
+    color: #333;
+    border-color: #888;
+    outline: 0;
+}
+.u-full-width tbody img{
+    max-height: 100px;
+    width: 100px;
+}
+.borrar-producto {
+    background-color: red;
+    border-radius: 50%;
+    padding:5px 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+.borrar-producto:hover{
+	background-color: red;
+    border-radius: 50%;
+    padding:5px 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+.center-button{
+	display: flex;
+	justify-content: center;
+}
